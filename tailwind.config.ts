@@ -51,6 +51,10 @@ const config: Config = {
         "slide-up": "slideUp 0.6s ease-out forwards",
         "scale-in": "scaleIn 0.5s ease-out forwards",
         "glow-pulse": "glowPulse 2s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "shimmer": "shimmer 2.5s linear infinite",
+        "breathe": "breathe 4s ease-in-out infinite",
+        "shimmer-sweep": "shimmerSweep 2.2s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -72,6 +76,22 @@ const config: Config = {
           "50%": {
             filter: "drop-shadow(0 0 20px rgba(220, 38, 38, 0.6))",
           },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
+        breathe: {
+          "0%, 100%": { opacity: "0.5", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.12)" },
+        },
+        shimmerSweep: {
+          "0%": { backgroundPosition: "200% center" },
+          "100%": { backgroundPosition: "-200% center" },
         },
       },
       container: {

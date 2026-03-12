@@ -117,22 +117,27 @@ export default function MeatSection() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  whileHover={{ y: -4, scale: 1.02 }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className="border border-white/10 p-6 hover:border-red/50 transition-colors duration-500 group"
+                  className="relative border border-white/10 p-6 hover:border-red/50 transition-all duration-500 group overflow-hidden cursor-default"
                 >
-                  <h4 className="text-lg font-semibold text-white mb-1 group-hover:text-red transition-colors">
+                  {/* Subtle glow on hover */}
+                  <div className="absolute inset-0 bg-red/0 group-hover:bg-red/5 transition-colors duration-500" />
+                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-red to-transparent group-hover:w-full transition-all duration-700" />
+                  <h4 className="relative text-lg font-semibold text-white mb-1 group-hover:text-red transition-colors duration-300">
                     {item.label}
                   </h4>
-                  <p className="text-sm text-white/50 uppercase tracking-wider">{item.desc}</p>
+                  <p className="relative text-sm text-white/50 uppercase tracking-wider">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
 
             <Link
               href={`/${locale}/menu`}
-              className="inline-block border-2 border-red hover:bg-red text-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.3em] transition-all duration-500"
+              className="group inline-block border-2 border-red hover:bg-red text-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.3em] transition-all duration-500 hover:shadow-[0_0_40px_rgba(220,38,38,0.45)] relative overflow-hidden"
             >
-              {t.cta}
+              <span className="relative z-10">{t.cta}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-red/0 via-white/10 to-red/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
             </Link>
           </motion.div>
         </div>

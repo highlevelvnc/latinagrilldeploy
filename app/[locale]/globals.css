@@ -39,4 +39,76 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Premium logo depth — layered drop-shadows */
+  .logo-depth {
+    filter:
+      drop-shadow(0 0 40px rgba(220, 38, 38, 0.55))
+      drop-shadow(0 0 80px rgba(220, 38, 38, 0.25))
+      drop-shadow(0 25px 60px rgba(0, 0, 0, 0.85));
+  }
+
+  .logo-depth-intense {
+    filter:
+      drop-shadow(0 0 60px rgba(220, 38, 38, 0.75))
+      drop-shadow(0 0 120px rgba(220, 38, 38, 0.35))
+      drop-shadow(0 35px 80px rgba(0, 0, 0, 0.95));
+  }
+
+  /* Shimmer gradient text */
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      rgba(245, 243, 239, 0.8) 0%,
+      rgba(212, 175, 55, 1) 30%,
+      rgba(245, 243, 239, 1) 50%,
+      rgba(212, 175, 55, 1) 70%,
+      rgba(245, 243, 239, 0.8) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Shimmer card sweep overlay — apply to ::after or child div */
+  .shimmer-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.055) 50%,
+      transparent 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmerSweep 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* ── Keyframes referenced by globals only (Tailwind handles its own) ── */
+@keyframes shimmerSweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }

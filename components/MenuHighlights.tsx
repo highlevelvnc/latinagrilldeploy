@@ -357,10 +357,21 @@ export default function MenuHighlights() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
-                    
+                    {/* Richer gradient: deep at bottom, fade centre, slight top */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+
                     {/* Corner Accent */}
                     <div className="absolute top-4 right-4 w-12 h-12 border-t border-r border-white/30 group-hover:border-red transition-colors duration-500" />
+
+                    {/* Shimmer sweep on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.055) 50%, transparent 65%)',
+                        backgroundSize: '200% 100%',
+                        animation: 'shimmerSweep 1.8s ease-in-out infinite',
+                      }}
+                    />
                   </div>
 
                   {/* Content */}
@@ -374,7 +385,7 @@ export default function MenuHighlights() {
                   </div>
 
                   {/* Animated Bottom Line */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red to-white group-hover:w-full transition-all duration-1000" />
+                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-red via-red/80 to-white/40 group-hover:w-full transition-all duration-1000" />
                 </motion.div>
               ))}
             </div>
@@ -390,10 +401,11 @@ export default function MenuHighlights() {
         >
           <Link
             href={`/${locale}/menu`}
-            className="group inline-block border-2 border-red hover:bg-red text-white px-16 py-6 text-sm font-bold uppercase tracking-[0.3em] transition-all duration-500 hover:shadow-2xl hover:shadow-red/60 relative overflow-hidden"
+            className="group inline-block border-2 border-red hover:bg-red text-white px-16 py-6 text-sm font-bold uppercase tracking-[0.3em] transition-all duration-500 hover:shadow-[0_0_60px_rgba(220,38,38,0.5),0_20px_40px_rgba(0,0,0,0.4)] relative overflow-hidden"
           >
-            <span className="relative z-10">{t.cta}</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red/0 via-white/10 to-red/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+            <span className="relative z-10 group-hover:tracking-[0.4em] transition-all duration-500">{t.cta}</span>
+            {/* Shimmer sweep */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red/0 via-white/12 to-red/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-900" />
           </Link>
         </motion.div>
       </div>
